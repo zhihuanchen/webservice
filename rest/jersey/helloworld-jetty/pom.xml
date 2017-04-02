@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>com.evan.webservice.rest.jersey.exmaples</groupId>
+	<artifactId>exmaples-helloworld-jetty</artifactId>
+	<packaging>war</packaging>
+	<name>helloworld-jetty Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<version>1.0-SNAPSHOT</version>
+	
+	 <build>
+                <finalName>simple-service-webapp</finalName>
+                <plugins>
+                        <plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-compiler-plugin</artifactId>
+                                <version>2.5.1</version>
+                                <inherited>true</inherited>
+                                <configuration>
+                                        <source>1.7</source>
+                                        <target>1.7</target>
+                                    <encoding>${project.build.sourceEncoding}</encoding>
+                                </configuration>
+                        </plugin>
+
+<!-- 
+                        <plugin>
+                                <groupId>org.mortbay.jetty</groupId>
+                                <artifactId>maven-jetty-plugin</artifactId>
+                                <version>6.1.26</version>
+                                <executions>
+                                        <execution>
+                                                <id>start-jetty</id>
+                                                <phase>pre-integration-test</phase>
+                                                <goals>
+                                                        <goal>run</goal>
+                                                </goals>
+                                        </execution>
+                                        <execution>
+                                                <id>stop-jetty</id>
+                                                <phase>post-integration-test</phase>
+                                                <goals>
+                                                        <goal>stop</goal>
+                                                </goals>
+                                        </execution>
+                                </executions>
+                        </plugin>
+-->
+
+                        <plugin>
+                                <groupId>org.eclipse.jetty</groupId>
+                                <artifactId>jetty-maven-plugin</artifactId>
+                                <version>9.1.0.RC0</version>
+                                <executions>
+                                        <execution>
+                                                <id>start-jetty</id>
+                                                <phase>pre-integration-test</phase>
+                                                <goals>
+                                                        <goal>start</goal>
+                                                </goals>
+                                        </execution>
+                                        <execution>
+                                                <id>stop-jetty</id>
+                                                <phase>post-integration-test</phase>
+                                                <goals>
+                                                        <goal>stop</goal>
+                                                </goals>
+                                        </execution>
+                                </executions>
+                        </plugin>
+   
+            </plugins>
+        </build>
+
+        <dependencyManagement>
+                <dependencies>
+                        <dependency>
+                                <groupId>org.glassfish.jersey</groupId>
+                                <artifactId>jersey-bom</artifactId>
+                                <version>${jersey.version}</version>
+                                <type>pom</type>
+                                <scope>import</scope>
+                        </dependency>
+                </dependencies>
+        </dependencyManagement>
+
+        <dependencies>
+                <dependency>
+                        <groupId>org.glassfish.jersey.containers</groupId>
+                        <artifactId>jersey-container-servlet-core</artifactId>
+                </dependency>
+        </dependencies>
+
+        <properties>
+                <jersey.version>2.17</jersey.version>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        </properties>
+</project>
